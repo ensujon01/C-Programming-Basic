@@ -1,0 +1,39 @@
+#include <stdio.h>
+int main()
+{
+   int n;
+   scanf("%d", &n);
+   int ar[n + 2];
+
+   int posi1, posi2;
+   int value1, value2;
+
+   for (int i = 0; i < n; i++)
+   {
+       scanf("%d", &ar[i]);
+   }
+
+   scanf("%d %d", &posi1, &posi2);
+   scanf("%d %d", &value1, &value2);
+
+   for (int i = n; i > posi1; i--) // Manage Space for 1st value
+   {
+       ar[i] = ar[i - 1];
+   }
+
+   ar[posi1] = value1; // Set value in position
+
+   for (int i = n + 1; i > posi2; i--) // Manage Space for 2nd value
+   {
+       ar[i] = ar[i - 1];
+   }
+
+   ar[posi2] = value2; // Set value in position
+
+   for (int i = 0; i < n + 2; i++)
+   {
+       printf("%d ", ar[i]);
+   }
+
+   return 0;
+}
