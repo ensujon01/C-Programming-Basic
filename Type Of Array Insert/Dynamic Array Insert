@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h> 
+
+int main() 
+{
+    int n;
+    scanf("%d", &n);
+
+    
+    int *ar = (int *)malloc(n * sizeof(int));// allocating memory
+
+    for (int i = 0; i < n; i++) 
+    {
+        scanf("%d", &ar[i]);
+    }
+
+    int posi, value;
+    scanf("%d %d", &posi, &value);
+
+    
+    if (posi < 0 || posi > n) // Checking position is valid or not
+    {
+        printf("Invalid position!\n");
+        free(ar);
+        return 0;
+    }
+ 
+    ar = (int *)realloc(ar, (n + 1) * sizeof(int));// Reallocating memory for one more element
+
+    for (int i = n; i > posi; i--) 
+    {
+        ar[i] = ar[i - 1];
+    }
+
+    ar[posi] = value; 
+
+    for (int i = 0; i <= n; i++) 
+    {
+        printf("%d ", ar[i]);
+    }
+    printf("\n");
+
+    free(ar); // Free dynamic allocated memory
+    return 0;
+}
